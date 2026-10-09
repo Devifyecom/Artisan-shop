@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <rect x="2" y="2" width="296" height="96" rx="14" fill="#fff" stroke="#2e7d32" stroke-width="4"/>
+  <g fill="#2e7d32" stroke="#2e7d32" stroke-width="4" stroke-linejoin="round"><rect x="22" y="44" width="40" height="32" rx="4"/><path d="M30 44v-8a12 12 0 0 1 24 0v8"/></g>
+  <text x="84" y="60" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" fill="#2e7d32">Sichere Zahlung</text>
+</svg>

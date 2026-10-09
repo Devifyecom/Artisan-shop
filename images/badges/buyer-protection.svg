@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <rect x="2" y="2" width="296" height="96" rx="14" fill="#fff" stroke="#1565c0" stroke-width="4"/>
+  <g fill="#1565c0" stroke="#1565c0" stroke-width="4" stroke-linejoin="round"><path d="M42 26l22 8v16c0 14-10 24-22 28-12-4-22-14-22-28V34z"/><path d="M33 52l7 7 13-14" stroke="#fff" stroke-width="5" fill="none"/></g>
+  <text x="84" y="60" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" fill="#1565c0">Käuferschutz</text>
+</svg>

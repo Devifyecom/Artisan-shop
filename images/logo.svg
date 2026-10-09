@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100" role="img" aria-label="Artisan Shop">
+  <g fill="none" stroke="#35b3db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 72c0-18 12-30 32-30s32 12 32 30"/><path d="M28 72h44"/><path d="M50 42V24"/><circle cx="50" cy="20" r="5" fill="#35b3db"/>
+  </g>
+  <text x="96" y="58" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="800" fill="#fff">artisan</text>
+  <text x="98" y="82" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="6" fill="#35b3db">SHOP.CH</text>
+</svg>

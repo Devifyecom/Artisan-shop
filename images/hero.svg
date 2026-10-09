@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1b2a"/><stop offset="1" stop-color="#05536c"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c58b52"/><stop offset="1" stop-color="#8a5a2e"/></linearGradient>
+  </defs>
+  <rect width="1500" height="500" fill="url(#bg)"/>
+  <rect y="360" width="1500" height="140" fill="url(#wood)"/>
+  <path d="M0 360h1500" stroke="#6b4423" stroke-width="6"/>
+  <!-- vase -->
+  <path d="M300 360c-60-20-70-90-40-150 15-30 15-55 0-80h80c-15 25-15 50 0 80 30 60 20 130-40 150z" fill="#35b3db"/>
+  <path d="M265 210h110" stroke="#fff" stroke-width="6" opacity=".5"/>
+  <!-- bowl -->
+  <path d="M470 300h220c0 40-50 60-110 60s-110-20-110-60z" fill="#e8d5c0"/>
+  <path d="M470 300h220" stroke="#b89a7c" stroke-width="6"/>
+  <!-- wooden spoon & board -->
+  <rect x="780" y="250" width="260" height="110" rx="18" fill="#a0693a"/><circle cx="1010" cy="280" r="10" fill="#0f1b2a"/>
+  <!-- yarn -->
+  <circle cx="1180" cy="300" r="60" fill="#e05d5d"/>
+  <path d="M1130 270c40 20 70 50 90 80M1125 305c40 5 80 20 100 40M1150 245c30 30 50 70 55 110" stroke="#fff" stroke-width="5" fill="none" opacity=".6"/>
+  <path d="M1240 330c40 10 60 20 80 30" stroke="#e05d5d" stroke-width="5" fill="none"/>
+  <text x="750" y="120" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="56" font-weight="800" fill="#fff">Schweizer Handwerk online</text>
+  <text x="750" y="170" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="26" fill="#9fdcf0">Keramik · Holz · Textilien · Glas · Schmuck</text>
+</svg>

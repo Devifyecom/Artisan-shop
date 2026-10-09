@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <rect x="2" y="2" width="296" height="96" rx="14" fill="#fff" stroke="#d52b1e" stroke-width="4"/>
+  <g fill="#d52b1e" stroke="#d52b1e" stroke-width="4" stroke-linejoin="round"><rect x="20" y="30" width="44" height="44" rx="6"/><path d="M42 40v24M30 52h24" stroke="#fff" stroke-width="7"/></g>
+  <text x="84" y="60" font-family="Montserrat, Arial, sans-serif" font-size="21" font-weight="700" fill="#d52b1e">Schweizer Versand</text>
+</svg>

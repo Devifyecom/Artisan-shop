@@ -1,0 +1,230 @@
+/* ==========================================================================
+   brand-table.css: ranked brand cards (BrandTable shortcode, style 3)
+   Card layout uses flex `order` so the DOM order (number, title, rating,
+   logo, offer, buttons) can be rearranged per breakpoint.
+   ========================================================================== */
+
+.grw-block-brand-table-box { line-height: 1.6; }
+
+.grw-brand-table-box.style-3 { margin: 1.5rem 0; }
+
+.grw-brand-table-box.style-3 .brand-card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border: 1px solid #efe5e5;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  transition: border-color .3s ease;
+  animation: fadeIn 1s ease;
+}
+.grw-brand-table-box.style-3 .brand-card:hover { border-color: #cbc3c3; }
+.grw-brand-table-box.style-3 .brand-card + .brand-card { margin-top: 30px; }
+
+/* Row 1: number, title, rating, with a divider under it */
+.grw-brand-table-box.style-3 .order-number {
+  order: 1;
+  flex: 0 0 auto;
+  margin: 0 9px 30px 0;
+  padding-left: 5px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.grw-brand-table-box.style-3 .order-number::after { content: "."; }
+.grw-brand-table-box.style-3 .order-number::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-muted);
+}
+
+.grw-brand-table-box.style-3 .title {
+  order: 2;
+  flex: 1 1 auto;
+  width: 65%;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.grw-brand-table-box.style-3 .rating-review-box {
+  order: 3;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 15%;
+  margin-bottom: 30px;
+}
+.grw-brand-table-box.style-3 .rating-box { display: flex; align-items: center; }
+.grw-brand-table-box.style-3 .rating-box::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fbbc04' d='m12 2.5 2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95L12 2.5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.grw-brand-table-box.style-3 .rating-box strong { font-size: 18px; font-weight: 600; }
+.grw-brand-table-box.style-3 .rating-box span { font-size: 14px; }
+
+/* Row 2: logo, offer, buttons */
+.grw-brand-table-box.style-3 .logo,
+.grw-brand-table-box.style-3 .dynamic-field-box,
+.grw-brand-table-box.style-3 .buttons { order: 5; }
+
+.grw-brand-table-box.style-3 .logo { flex: 1 0 19%; margin-right: 30px; }
+.grw-brand-table-box.style-3 .logo img {
+  width: 240px;
+  min-width: 210px;
+  aspect-ratio: 2;
+  border-radius: 6px;
+  object-fit: cover;
+  background-color: #0f1b2a;
+}
+
+.grw-brand-table-box.style-3 .dynamic-field-box {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  flex: 1 0 18%;
+  gap: 10px;
+  margin-right: 30px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  text-align: center;
+}
+.grw-brand-table-box.style-3 .dynamic-field-box .value { font-size: 20px; font-weight: 600; line-height: normal; }
+.grw-brand-table-box.style-3 .dynamic-field-box .label { font-size: 16px; line-height: normal; }
+
+.grw-brand-table-box.style-3 .buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 22%;
+  align-self: center;
+}
+.grw-brand-table-box.style-3 .buttons a.site {
+  display: block;
+  min-width: 160px;
+  padding: 20px 15px;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  transition: background .2s;
+}
+.grw-brand-table-box.style-3 .buttons a.site:hover { background: var(--color-primary-hover); }
+.grw-brand-table-box.style-3 .buttons a.site:active { background: var(--color-primary-active); }
+.grw-brand-table-box.style-3 .buttons a.site:focus-visible { outline: 1px dashed var(--color-primary-hover); outline-offset: 1px; }
+
+/* Promo code with copy button */
+.grw-brand-table-box.style-3 .promo-code-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 15px 63px 15px 15px;
+  border-radius: 6px;
+  background: var(--color-primary-opacity-10);
+  color: var(--color-primary-active);
+}
+.grw-brand-table-box.style-3 .promo-code-title { font-size: 14px; }
+.grw-brand-table-box.style-3 .promo-code-value {
+  overflow: hidden;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+.grw-brand-table-box.style-3 .promo-code-copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background: var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='8' y='8' width='12' height='12' rx='2'/%3E%3Cpath d='M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3'/%3E%3C/svg%3E") center / 22px no-repeat;
+  transition: background-color .2s;
+}
+.grw-brand-table-box.style-3 .promo-code-copy-btn:hover { background-color: var(--color-primary-hover); }
+.grw-brand-table-box.style-3 .promo-code-copy-btn.success {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E");
+}
+.grw-brand-table-box.style-3 .promo-code-copy-btn.error {
+  pointer-events: none;
+  background-color: #ef0201;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E");
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .grw-brand-table-box.style-3 .dynamic-field-box { flex: 1 0 30%; margin-right: 0; }
+  .grw-brand-table-box.style-3 .buttons {
+    flex: 1 0 50%;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .grw-brand-table-box.style-3 .promo-code-box { margin-bottom: 0; }
+  .grw-brand-table-box.style-3 .buttons > * { flex: 1; }
+}
+
+/* ---------- Mobile: stacked, centred card ---------- */
+@media (max-width: 768px) {
+  .grw-brand-table-box.style-3 .brand-card { padding-top: 33px; }
+  .grw-brand-table-box.style-3 .order-number { margin-bottom: 10px; font-size: 20px; font-weight: 700; }
+  .grw-brand-table-box.style-3 .order-number::before { display: none; }
+  .grw-brand-table-box.style-3 .title { margin-bottom: 10px; font-size: 20px; text-align: center; }
+  .grw-brand-table-box.style-3 .rating-review-box {
+    flex: 1 0 100%;
+    flex-direction: column;
+    width: auto;
+    margin-bottom: 40px;
+  }
+  .grw-brand-table-box.style-3 .rating-box::before { width: 30px; height: 30px; }
+  .grw-brand-table-box.style-3 .rating-box strong { font-size: 26px; font-weight: 700; }
+  .grw-brand-table-box.style-3 .rating-box span { font-size: 18px; font-weight: 600; }
+
+  .grw-brand-table-box.style-3 .logo {
+    position: relative;
+    flex: 1 0 100%;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  .grw-brand-table-box.style-3 .logo::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--color-muted);
+  }
+  .grw-brand-table-box.style-3 .logo img { width: 360px; height: 180px; min-width: 0; }
+
+  .grw-brand-table-box.style-3 .dynamic-field-box { flex: 1 0 100%; padding: 15px; }
+  .grw-brand-table-box.style-3 .buttons { flex-direction: column; width: 100%; margin-top: 15px; gap: 15px; }
+}
+
+@media (max-width: 540px) {
+  .grw-brand-table-box.style-3 .logo img { width: 100%; height: auto; }
+}

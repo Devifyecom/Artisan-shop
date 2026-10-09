@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <rect width="400" height="200" fill="#5b3a1e"/>
+  <circle cx="70" cy="100" r="40" fill="none" stroke="#c58b52" stroke-width="6"/>
+  <text x="70" y="114" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="40" font-weight="800" fill="#c58b52">A</text>
+  <text x="130" y="96" font-family="Montserrat, Arial, sans-serif" font-size="30" font-weight="800" fill="#fff">Atelier</text>
+  <text x="130" y="132" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="500" fill="#c58b52">Alpenholz</text>
+</svg>
