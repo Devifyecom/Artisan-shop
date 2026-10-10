@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Homepage content sections (Shopware CMS blocks)
+   ========================================================================== */
+
+.page-content { padding-block: 1.5rem 0; }
+@media (min-width: 992px) { .page-content { padding-top: 3rem; } }
+
+.cms-block { margin-bottom: 3rem; }
+.cms-block:last-child { margin-bottom: 0; }
+
+/* The live theme renders inline links in CMS copy at 14px (".is-ctl-navigation a") */
+.cms-copy a { font-size: 14px; }
+.cms-copy { overflow-wrap: break-word; }
+
+/* ---------- Category + manufacturer tiles ---------- */
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.grid-item:hover { text-decoration: none; border-color: var(--color-primary); }
+@media (min-width: 576px) {
+  .grid-item { border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .grid-item:hover { box-shadow: 0 2px 10px rgba(39, 69, 51, 0.12); }
+}
+
+.category-list-item {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+.category-list-item .h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  text-align: left;
+}
+.category-list-item img {
+  flex-shrink: 0;
+  width: 65px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.manufacturer-list-item { padding: 0.5rem; font-size: 1.25rem; font-weight: 700; }
+.manufacturer-list-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.manufacturer-list-item img.is-wide { max-height: 44px; }
+
+.manufacturer-more { margin: 1.5rem 0 0; text-align: center; }
+.manufacturer-more .btn { min-width: 202px; padding-inline: 3rem; }
+
+/* Expandable A–Z manufacturer table */
+.manufacturer-expandable { margin-top: 2rem; }
+.manufacturer-search { max-width: 100%; margin-block: 1rem; }
+@media (min-width: 576px) { .manufacturer-search { max-width: 33%; min-width: 280px; } }
+
+.manufacturer-table {
+  --columns: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 576px)  { .manufacturer-table { --columns: 2; } }
+@media (min-width: 768px)  { .manufacturer-table { --columns: 4; } }
+@media (min-width: 1200px) { .manufacturer-table { --columns: 5; } }
+.manufacturer-table li { height: 2.5rem; line-height: 2.5rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.manufacturer-table a { font-size: 16px; color: var(--color-link); }
+.manufacturer-table-empty { padding: 0.5rem 0; color: var(--color-muted); }
+
+/* ---------- Text + image blocks ---------- */
+.seo-row {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .seo-row { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .seo-row--image-right .seo-image { justify-self: end; }
+  .seo-row--image-left .seo-text { padding-top: 1.5rem; }
+}
+.seo-image img { display: block; width: 100%; max-width: 500px; height: auto; }
+.seo-text ul { padding-left: 1.5rem; margin-top: 1rem; }
+.seo-text li { margin-bottom: 0.15rem; }
+
+/* ---------- Reviews ---------- */
+.review-carousel { position: relative; margin-bottom: 1.5rem; }
+
+.review-carousel-viewport { margin-inline: -0.5rem; overflow: hidden; }
+.review-carousel-track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.45s cubic-bezier(0.3, 0, 0.15, 1);
+  touch-action: pan-y;
+}
+.review-card {
+  flex: 0 0 100%;
+  padding: 0 0.5rem;
+}
+@media (min-width: 576px)  { .review-card { flex-basis: 50%; } }
+@media (min-width: 992px)  { .review-card { flex-basis: 33.3333%; } }
+@media (min-width: 1200px) { .review-card { flex-basis: 25%; } }
+
+.review-card-content {
+  height: 100%;
+  min-height: 260px;
+  padding: 20px;
+  background: var(--color-surface);
+}
+.review-header { margin-bottom: 10px; }
+.reviewer-name { font-size: 1.1em; font-weight: 700; }
+.review-date { margin-top: 5px; color: var(--color-muted); font-size: 0.9em; }
+.review-card .rating-stars { margin-bottom: 0.5rem; }
+.review-content { font-size: 0.9375rem; }
+
+.review-carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-50%);
+}
+.review-carousel-control:disabled { opacity: 0.35; cursor: default; }
+.review-carousel-control .icon { width: 1rem; height: 1rem; }
+/* Arrows sit next to the heading; outside the cards once there is room */
+.review-carousel-control { display: none; }
+@media (min-width: 576px) {
+  .review-carousel-control { display: inline-flex; top: -3.5rem; transform: none; }
+  .review-carousel-control.is-prev { right: 48px; }
+  .review-carousel-control.is-next { right: 0; }
+}
+@media (min-width: 1520px) {
+  .review-carousel-control { top: 50%; transform: translateY(-50%); }
+  .review-carousel-control.is-prev { left: -56px; right: auto; }
+  .review-carousel-control.is-next { right: -56px; }
+}
+
+.review-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 1rem;
+}
+.review-carousel-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+.review-carousel-dots button[aria-current="true"] { background: var(--color-primary); }
+
+.review-badges {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+}
+@media (min-width: 768px) { .review-badges { grid-template-columns: repeat(2, minmax(0, 33%)); gap: 0; } }
+.review-badge { display: flex; flex-direction: column; align-items: flex-start; justify-self: center; }
+.badge-content { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.badge-logo img { width: auto; height: 30px; }
+.badge-text { font-size: 12px; }
+.badge-rating { display: flex; align-items: center; gap: 0.5rem; }
+.rating-score { font-size: 12px; font-weight: 500; }
+.badge-reviews { font-size: 0.875rem; padding: 0.5rem 0.75rem; }
+
+/* ---------- Customer success (contact) ---------- */
+.personal-contact {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0 3rem;
+}
+.personal-contact-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+@media (max-width: 575.98px) {
+  .personal-contact-avatar { width: 80px; height: 80px; font-size: 1.5rem; }
+}
+.personal-contact-text { max-width: 450px; margin: 0; }
+@media (min-width: 768px) { .personal-contact-text { margin-left: 40px; } }
+
+.contact-options { display: grid; gap: 0; }
+@media (min-width: 768px) { .contact-options { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 950px; } }
+
+.contact-option { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.contact-icon { width: 65px; height: 65px; object-fit: contain; }
+.contact-option-content h4 { margin: 0; font-weight: 400; }
+.contact-detail { margin: 0; font-size: 14px; }
+.contact-option.has-spacer .contact-option-content { margin-bottom: 43px; }
+.qr-code img { width: 36px; height: 36px; margin-top: 0.5rem; image-rendering: pixelated; }
+.contact-options .btn-outline-primary { width: 100%; margin-bottom: 30px; }
+@media (min-width: 768px) {
+  .contact-options .btn-outline-primary { width: 215px; margin-bottom: 0; }
+}
+@media (max-width: 767.98px) {
+  .qr-code { display: none; }
+  .contact-option.has-spacer .contact-option-content { margin-bottom: 0; }
+}
+
+/* ---------- Payment + shipping logos ---------- */
+.logo-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) { .logo-row { flex-direction: row; align-items: center; gap: 1rem; } }
+.logo-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.logo-list img { display: block; width: auto; height: 45px; max-width: 150px; }

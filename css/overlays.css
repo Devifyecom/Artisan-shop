@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Overlays: backdrop, offcanvas panel, modal dialogs and the cookie consent.
+   ========================================================================== */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--overlay-z);
+  background: var(--color-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.backdrop.is-visible { opacity: 1; visibility: visible; }
+
+/* ---------- Offcanvas ---------- */
+.offcanvas {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: var(--offcanvas-z);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  background: var(--color-white);
+  color: var(--color-text);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--transition), visibility var(--transition);
+}
+.offcanvas.is-open { transform: none; visibility: visible; }
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-white);
+}
+.offcanvas-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: #f4f5f2;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+.offcanvas-close:hover { background: var(--color-secondary); }
+.offcanvas-body { flex: 1 1 auto; overflow-y: auto; padding: 1rem; }
+.offcanvas-body.bg-secondary { background: var(--color-secondary); }
+
+/* ---------- Modal ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--modal-z);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+  background: var(--color-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.modal.is-open { opacity: 1; visibility: visible; }
+
+.modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  border-radius: var(--radius);
+  background: var(--color-white);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  transform: translateY(-20px);
+  transition: transform 0.2s;
+}
+.modal.is-open .modal-dialog { transform: none; }
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 0;
+}
+.modal-title { margin: 0; }
+.modal-body { padding: 1rem 1.25rem 1.25rem; }
+.modal-body ol { padding-left: 1.25rem; }
+.modal-body li { margin-bottom: 0.5rem; }
+
+/* ---------- Cookie consent ---------- */
+.cookie-consent .modal-dialog { max-width: 560px; }
+.cookie-consent-title { margin: 0 0 1rem; text-align: center; }
+.cookie-consent-description { font-size: 0.9375rem; }
+
+.cookie-group { padding: 0.75rem 0; border-top: 1px solid var(--color-border); }
+.cookie-group-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.cookie-group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+.cookie-group-toggle .icon { width: 0.875rem; height: 0.875rem; transition: transform 0.2s; }
+.cookie-group-toggle[aria-expanded="true"] .icon { transform: rotate(90deg); }
+.cookie-group-entries { padding: 0.5rem 0 0 1.75rem; font-size: 0.875rem; }
+.cookie-group-entries p { margin-bottom: 0.5rem; }
+.cookie-entry { margin-bottom: 0.5rem; }
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-check-input {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+.form-check label { cursor: pointer; }
+.form-check-input:disabled + label { cursor: default; opacity: 0.8; }
+
+.cookie-consent-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.cookie-consent-buttons .btn { flex: 1 1 auto; }
+.cookie-consent-footer-text { margin-top: 1rem; font-size: 0.75rem; text-align: center; }
+.cookie-consent-footer-text a { color: var(--color-text); text-decoration: underline; }

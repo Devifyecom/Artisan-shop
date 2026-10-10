@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
-  <rect width="400" height="200" fill="#6b1f2a"/>
-  <circle cx="70" cy="100" r="40" fill="none" stroke="#e05d5d" stroke-width="6"/>
-  <text x="70" y="114" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="40" font-weight="800" fill="#e05d5d">W</text>
-  <text x="130" y="96" font-family="Montserrat, Arial, sans-serif" font-size="30" font-weight="800" fill="#fff">Wollwerk</text>
-  <text x="130" y="132" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="500" fill="#e05d5d">Bern</text>
-</svg>

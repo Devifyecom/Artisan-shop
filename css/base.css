@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Base: design tokens, reset, typography, layout and shared components
+   Values taken from the archived artisanshop.ch theme (Shopware 6 + Bootstrap 5.3).
+   ========================================================================== */
+
+:root {
+  /* Brand */
+  --color-primary: #2b6649;
+  --color-primary-dark: #22523a;
+  --color-text: #274533;
+  --color-link: #3a7e59;
+  --color-secondary: #e1e4dc;
+  --color-secondary-dark: #d2d6cb;
+  --color-border: #dadbd3;
+  --color-muted: #666;
+  --color-surface: #fafafa;
+  --color-white: #fff;
+  --color-star: #fedc70;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Type: the live site uses the commercial "GT Eesti Text"; Jost is the closest free match. */
+  --font-family: "Jost", "GT Eesti Text Regular", Verdana, system-ui, sans-serif;
+
+  /* Layout */
+  --container-max: 1400px;
+  --container-pad: 20px;
+  --radius: 5px;
+  --radius-sm: 3px;
+  --header-z: 1020;
+  --overlay-z: 1040;
+  --offcanvas-z: 1045;
+  --modal-z: 1055;
+  --transition: 0.3s cubic-bezier(0.3, 0, 0.15, 1);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  font-size: 90%;
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 1200px) { html { font-size: 100%; } }
+@media (prefers-reduced-motion: no-preference) { :root { scroll-behavior: smooth; } }
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body.is-scroll-locked { overflow: hidden; }
+
+img, svg { vertical-align: middle; }
+img { max-width: 100%; height: auto; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+ul { margin-top: 0; }
+p { margin: 0 0 1rem; }
+[hidden] { display: none !important; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, .h4, .h5 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+h1 { font-size: calc(1.3125rem + 0.75vw); }
+h2 { font-size: calc(1.2875rem + 0.45vw); }
+h3 { font-size: calc(1.275rem + 0.3vw); }
+h4, .h4 { font-size: 1.25rem; }
+.h5 { font-size: 1.1rem; }
+@media (min-width: 1200px) {
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.625rem; }
+  h3 { font-size: 1.5rem; }
+}
+
+a { color: var(--color-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+b, strong { font-weight: 700; }
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.content-main { flex: 1 0 auto; }
+
+/* Bootstrap-style CSS grid used by the category and manufacturer lists */
+.grid-items {
+  --columns: 1;
+  --gap: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  gap: var(--gap);
+  margin-block: 1rem;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 576px)  { .grid-items { --columns: 2; --gap: 0.5rem; } }
+@media (min-width: 768px)  { .grid-items { --columns: 3; } }
+@media (min-width: 1200px) { .grid-items { --columns: 4; } }
+
+/* ---------- Icons (inline SVG sprite) ---------- */
+.svg-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: inherit;
+}
+.icon svg { width: 100%; height: 100%; fill: currentColor; }
+.icon-xs { width: 0.75rem; height: 0.75rem; }
+.icon-sm { width: 1rem; height: 1rem; }
+.icon-lg { width: 1.875rem; height: 1.875rem; }
+.icon-rotate-down svg { transform: rotate(90deg); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5625rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s;
+}
+.btn:hover { text-decoration: none; }
+.btn:focus-visible { outline: 0; box-shadow: 0 0 0 0.25rem rgba(43, 102, 73, 0.25); }
+.btn-rounded { border-radius: var(--radius); }
+.btn-block { display: flex; width: 100%; }
+
+.btn-primary { color: var(--color-white); background: var(--color-primary); border-color: var(--color-primary); }
+.btn-primary:hover { background: var(--color-primary-dark); border-color: var(--color-primary-dark); }
+
+.btn-secondary { color: var(--color-text); background: var(--color-secondary); border-color: var(--color-secondary); }
+.btn-secondary:hover { background: var(--color-secondary-dark); border-color: var(--color-secondary-dark); }
+
+.btn-outline-primary { color: var(--color-primary); border-color: var(--color-primary); background: transparent; font-size: 0.875rem; }
+.btn-outline-primary:hover { color: var(--color-white); background: var(--color-primary); }
+
+.btn-link {
+  padding: 0;
+  border: 0;
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+/* Close button ("x") */
+.btn-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text);
+}
+.btn-close:hover { background: rgba(0, 0, 0, 0.05); }
+
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+  display: block;
+  width: 100%;
+  padding: 0.5625rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  appearance: none;
+}
+.form-control:focus,
+.form-select:focus {
+  outline: 0;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem rgba(43, 102, 73, 0.25);
+}
+.form-select {
+  padding-right: 2.25rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23274533' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+.form-select:disabled { background-color: #f1f2ee; color: #8a948d; cursor: not-allowed; }
+.form-text { font-size: 0.875rem; }
+
+/* ---------- Accessibility helpers ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2000;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-secondary);
+  transform: translate(-50%, -110%);
+  transition: transform 0.15s;
+}
+.skip-to-content:focus { transform: translate(-50%, 0); }
+
+/* ---------- Star rating ---------- */
+.rating-stars { display: inline-flex; gap: 2px; color: var(--color-star); }
+.rating-stars .icon { width: 0.875rem; height: 0.875rem; }
+
+/* ---------- Loader ---------- */
+.loader {
+  width: 2rem;
+  height: 2rem;
+  border: 0.25em solid var(--color-primary);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

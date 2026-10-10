@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Richmenu: the category flyout opened by the "Navigation" button.
+   ≥1024px: up to three 300px columns (Bereich → Gerät → Bauteil) under the header,
+            the next column opens on hover/focus.
+   <1024px: a full-height drawer (max 500px) with drill-down levels.
+   ========================================================================== */
+
+.richmenu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--header-z) - 1);
+  background: var(--color-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.richmenu-overlay.is-visible { opacity: 1; visibility: visible; }
+
+.richmenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--offcanvas-z);
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  background: var(--color-white);
+  color: var(--color-text);
+  text-shadow: none;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform var(--transition), visibility var(--transition);
+}
+.richmenu.is-open { transform: none; visibility: visible; }
+
+.richmenu-level {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--transition), visibility var(--transition);
+}
+.richmenu-level.is-current { transform: none; visibility: visible; }
+.richmenu-level.is-behind { transform: translateX(-30%); visibility: hidden; }
+
+.richmenu-level-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 60px;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.richmenu-level-title { margin: 0; font-size: 1.125rem; font-weight: 700; }
+.richmenu-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font-weight: 700;
+}
+.richmenu-all {
+  display: block;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.richmenu-list {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.richmenu-item a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 21px;
+  text-decoration: none;
+}
+.richmenu-level[data-level="0"] .richmenu-item a { font-size: 16px; font-weight: 700; padding-block: 14px; }
+.richmenu-item a:hover,
+.richmenu-item.is-active > a { background: var(--color-secondary); }
+.richmenu-item-icon { width: 28px; height: 28px; }
+.richmenu-item-text { flex: 1 1 auto; }
+.richmenu-item .icon { width: 1rem; height: 1rem; color: var(--color-text); }
+
+@media (min-width: 1024px) {
+  .richmenu {
+    position: absolute;
+    top: 100%;
+    bottom: auto;
+    max-width: none;
+    width: auto;
+    height: 450px;
+    box-shadow: 0 43px 43px -6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+  .richmenu.is-open { transform: none; opacity: 1; }
+
+  .richmenu-level,
+  .richmenu-level.is-behind {
+    position: relative;
+    inset: auto;
+    width: 300px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 4px solid var(--color-primary);
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+  .richmenu-level:not(.has-content) { display: none; }
+  .richmenu-level-header { display: none; }
+  .richmenu-level[data-level="0"] .richmenu-item a { font-size: 16px; }
+}
